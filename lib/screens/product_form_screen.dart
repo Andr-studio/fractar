@@ -260,11 +260,11 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 validator: (value) {
                   if (value != null && value.isNotEmpty) {
                     final urlPattern = RegExp(
-                      r'^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)(\?.*)?$',
+                      r'^https?:\/\/.+',
                       caseSensitive: false,
                     );
                     if (!urlPattern.hasMatch(value)) {
-                      return 'Ingrese una URL de imagen válida';
+                      return 'Ingrese una URL válida (debe comenzar con http:// o https://)';
                     }
                   }
                   return null;
