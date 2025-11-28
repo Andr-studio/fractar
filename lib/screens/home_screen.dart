@@ -409,8 +409,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildDashboard() {
-    return FutureBuilder<Map<String, dynamic>>(
-      future: _firestoreService.getStatistics(),
+    return StreamBuilder<Map<String, dynamic>>(
+      stream: _firestoreService.getStatistics(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -505,21 +505,31 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Icon(icon, color: color, size: 28),
             ),
             const SizedBox(width: 16),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(color: Colors.grey[600], fontSize: 14),
-                ),
-                Text(
-                  value,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(color: Colors.grey[600], fontSize: 14),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-              ],
+                  const SizedBox(height: 4),
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      value,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
