@@ -86,10 +86,9 @@ class FirestoreService {
         );
   }
 
-  // Obtener estadísticas
-  Future<Map<String, dynamic>> getStatistics() async {
-    try {
-      QuerySnapshot snapshot = await _db.collection(_collection).get();
+  // Obtener estadísticas (actualización en tiempo real)
+  Stream<Map<String, dynamic>> getStatistics() {
+    return _db.collection(_collection).snapshots().map((snapshot) {
       int totalProducts = snapshot.docs.length;
       int totalStock = 0;
       double totalValue = 0;
@@ -112,8 +111,6 @@ class FirestoreService {
         'totalValue': totalValue,
         'byCategory': byCategory,
       };
-    } catch (e) {
-      throw Exception('Error al obtener estadísticas: $e');
-    }
+    });
   }
 }
