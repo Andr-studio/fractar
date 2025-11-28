@@ -261,8 +261,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? Image.network(
                         product.imagenUrl,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) =>
-                            _buildPlaceholderImage(product.categoria),
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          );
+                        },
+                        errorBuilder: (context, error, stackTrace) {
+                          print('Error cargando imagen: $error');
+                          print('URL: ${product.imagenUrl}');
+                          return _buildPlaceholderImage(product.categoria);
+                        },
                       )
                     : _buildPlaceholderImage(product.categoria),
               ),

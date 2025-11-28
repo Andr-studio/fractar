@@ -475,6 +475,12 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                     'No se pudo cargar la imagen',
                     style: TextStyle(color: Colors.grey[600]),
                   ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Error: ${error.toString()}',
+                    style: TextStyle(color: Colors.red[400], fontSize: 10),
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             );
