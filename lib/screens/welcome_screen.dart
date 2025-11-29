@@ -77,7 +77,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         ),
                         child: Center(
                           child: Image.asset(
-                            'assets/images/logo.png',
+                            'assets/images/logoP.png',
                             width: 140,
                             errorBuilder: (context, error, stackTrace) => Icon(
                               Icons.auto_awesome,

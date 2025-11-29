@@ -145,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen>
                           ),
                           child: Center(
                             child: Image.asset(
-                              'assets/images/logo.png',
+                              'assets/images/logoP.png',
                               width: 90,
                               errorBuilder: (context, error, stackTrace) =>
                                   Icon(
