@@ -137,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen>
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
+                                color: Colors.black.withValues(alpha: 0.2),
                                 blurRadius: 20,
                                 offset: const Offset(0, 10),
                               ),
@@ -184,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen>
                             vertical: 6,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.2),
+                            color: Colors.white.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: const Text(
@@ -196,11 +196,11 @@ class _LoginScreenState extends State<LoginScreen>
                         Container(
                           padding: const EdgeInsets.all(24),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.95),
+                            color: Colors.white.withValues(alpha: 0.95),
                             borderRadius: BorderRadius.circular(24),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
+                                color: Colors.black.withValues(alpha: 0.1),
                                 blurRadius: 20,
                                 offset: const Offset(0, 10),
                               ),
@@ -336,7 +336,7 @@ class _LoginScreenState extends State<LoginScreen>
                         Text(
                           'Proyecto ArtCC',
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.7),
+                            color: Colors.white.withValues(alpha: 0.7),
                             fontSize: 12,
                           ),
                         ),

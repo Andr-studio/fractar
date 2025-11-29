@@ -95,7 +95,7 @@ class FirestoreService {
       Map<String, int> byCategory = {};
 
       for (var doc in snapshot.docs) {
-        var data = doc.data() as Map<String, dynamic>;
+        var data = doc.data();
         int stock = data['stock'] ?? 0;
         double precio = (data['precio'] ?? 0).toDouble();
         String categoria = data['categoria'] ?? 'Sin categoría';

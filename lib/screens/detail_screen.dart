@@ -26,7 +26,7 @@ class DetailScreen extends StatelessWidget {
                     end: Alignment.bottomCenter,
                     colors: [
                       _getCategoryColor(product.categoria),
-                      _getCategoryColor(product.categoria).withOpacity(0.7),
+                      _getCategoryColor(product.categoria).withValues(alpha: 0.7),
                     ],
                   ),
                 ),
@@ -82,8 +82,8 @@ class DetailScreen extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: product.stock > 0
-                              ? Colors.green.withOpacity(0.1)
-                              : Colors.red.withOpacity(0.1),
+                              ? Colors.green.withValues(alpha: 0.1)
+                              : Colors.red.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
                             color: product.stock > 0
@@ -112,7 +112,7 @@ class DetailScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: _getCategoryColor(
                         product.categoria,
-                      ).withOpacity(0.1),
+                      ).withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Row(
@@ -239,7 +239,7 @@ class DetailScreen extends StatelessWidget {
       child: Icon(
         _getCategoryIcon(categoria),
         size: 100,
-        color: Colors.white.withOpacity(0.5),
+        color: Colors.white.withValues(alpha: 0.5),
       ),
     );
   }
@@ -257,7 +257,7 @@ class DetailScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -268,7 +268,7 @@ class DetailScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(icon, color: color),

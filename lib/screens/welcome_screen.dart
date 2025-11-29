@@ -69,7 +69,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
+                              color: Colors.black.withValues(alpha: 0.3),
                               blurRadius: 30,
                               offset: const Offset(0, 15),
                             ),
@@ -119,7 +119,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.15),
+                        color: Colors.white.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
@@ -211,7 +211,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withValues(alpha: 0.2),
             shape: BoxShape.circle,
           ),
           child: Icon(icon, color: Colors.white, size: 28),

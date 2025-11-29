@@ -419,7 +419,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     required Function(String?) onChanged,
   }) {
     return DropdownButtonFormField<String>(
-      value: value,
+      initialValue: value,
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(icon, color: const Color(0xFF6B4EAA)),

@@ -46,9 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
             onSelected: (value) async {
               if (value == 'logout') {
                 await _authService.signOut();
-                if (mounted) {
-                  Navigator.pushReplacementNamed(context, '/login');
-                }
+                if (!context.mounted) return;
+                Navigator.pushReplacementNamed(context, '/login');
               }
             },
             itemBuilder: (context) => [
@@ -142,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onSelected: (selected) {
                 setState(() => _selectedCategory = category);
               },
-              selectedColor: const Color(0xFF6B4EAA).withOpacity(0.2),
+              selectedColor: const Color(0xFF6B4EAA).withValues(alpha: 0.2),
               checkmarkColor: const Color(0xFF6B4EAA),
             ),
           );
@@ -256,7 +255,7 @@ class _HomeScreenState extends State<HomeScreen> {
               flex: 3,
               child: Container(
                 width: double.infinity,
-                color: _getCategoryColor(product.categoria).withOpacity(0.1),
+                color: _getCategoryColor(product.categoria).withValues(alpha: 0.1),
                 child: product.imagenUrl.isNotEmpty
                     ? Image.network(
                         product.imagenUrl,
@@ -273,8 +272,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         },
                         errorBuilder: (context, error, stackTrace) {
-                          print('Error cargando imagen: $error');
-                          print('URL: ${product.imagenUrl}');
                           return _buildPlaceholderImage(product.categoria);
                         },
                       )
@@ -306,7 +303,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                         color: _getCategoryColor(
                           product.categoria,
-                        ).withOpacity(0.1),
+                        ).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
@@ -336,8 +333,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           decoration: BoxDecoration(
                             color: product.stock > 0
-                                ? Colors.green.withOpacity(0.1)
-                                : Colors.red.withOpacity(0.1),
+                                ? Colors.green.withValues(alpha: 0.1)
+                                : Colors.red.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
@@ -369,7 +366,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Icon(
         _getCategoryIcon(categoria),
         size: 50,
-        color: _getCategoryColor(categoria).withOpacity(0.5),
+        color: _getCategoryColor(categoria).withValues(alpha: 0.5),
       ),
     );
   }
@@ -499,7 +496,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
+                color: color.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(icon, color: color, size: 28),
@@ -592,7 +589,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF6B4EAA).withOpacity(0.1),
+                      color: const Color(0xFF6B4EAA).withValues(alpha: 0.1),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
@@ -666,7 +663,7 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
+            color: color.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(icon, color: color),
@@ -748,7 +745,7 @@ class ProductSearchDelegate extends SearchDelegate<Product?> {
             final product = snapshot.data![index];
             return ListTile(
               leading: CircleAvatar(
-                backgroundColor: const Color(0xFF6B4EAA).withOpacity(0.1),
+                backgroundColor: const Color(0xFF6B4EAA).withValues(alpha: 0.1),
                 child: const Icon(Icons.inventory, color: Color(0xFF6B4EAA)),
               ),
               title: Text(product.nombre),
